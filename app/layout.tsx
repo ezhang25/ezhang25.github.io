@@ -6,18 +6,22 @@ import { FaGithub, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
 
 export function NavBar() {
   return (
-    <Tabs.Root value="none" size="lg" variant="subtle" padding="5" width="full">
-      <Tabs.List width="full" display="flex">
-        <Tabs.Trigger asChild value="evan" fontSize="30px" padding="5" marginTop="3" marginLeft="20" marginRight="auto">
-          <NextLink href="/">Evan Zhang</NextLink>
+    <Tabs.Root display="flex" flexWrap={{ base: 'wrap', md: 'nowrap' }} value="none" size="lg" variant="subtle" padding="5" width="full">
+      <Tabs.List width="full" gap="3%" marginTop="3">
+        <Tabs.Trigger asChild value="evan" fontSize="200%" padding="5" marginLeft="20" marginRight="auto">
+          <NextLink href="/" style={{ whiteSpace: "nowrap" }}>
+            Evan Zhang
+          </NextLink>
         </Tabs.Trigger>
-        <Tabs.Trigger value="about" fontSize="lg" padding="5" marginTop="3" marginRight="10">
+        <Tabs.Trigger value="about" fontSize="lg" padding="5">
           About               
         </Tabs.Trigger>
-        <Tabs.Trigger asChild value="projects" fontSize="lg" padding="5" marginTop="3" marginRight="10">
-          <NextLink href="/projects">Projects</NextLink>
+        <Tabs.Trigger asChild value="projects" fontSize="lg" padding="5">
+          <NextLink href="/projects">
+              Projects  
+          </NextLink>
         </Tabs.Trigger>
-        <Tabs.Trigger asChild value="resume" fontSize="lg"  padding="5" marginTop="3" marginRight="20">
+        <Tabs.Trigger asChild value="resume" fontSize="lg"  padding="5" marginRight="20">
           <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</NextLink>
         </Tabs.Trigger>
       </Tabs.List>
