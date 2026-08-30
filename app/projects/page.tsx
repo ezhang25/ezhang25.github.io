@@ -1,23 +1,40 @@
-import { Grid, GridItem, Box, Image, Button, Text, Card, Separator, Heading, SimpleGrid} from "@chakra-ui/react"
+import { Image, Text, Card, Heading, Flex, HStack, Badge } from "@chakra-ui/react"
 
 const projects = [
   {
     title: "Run Routify",
     desc: "A C++ application that generates running loops.",
-    img: "/images/run-routify.png",
+    img: "/images/placeholder.png",
     link: "https://github.com/yourname/run-routify",
+    technologies: ["C++", "C#", "Python", "AWS", "TypeScript"]
   },
   {
     title: "Fraud Detector",
     desc: "Detects suspicious Hypixel Skyblock auctions.",
-    img: "/images/fraud-detector.png",
+    img: "/images/placeholder.png",
     link: "https://github.com/yourname/fraud-detector",
+    technologies: ["C++", "C#", "AWS"]
   },
   {
     title: "Drawing Game",
     desc: "A multiplayer browser-based drawing game.",
-    img: "/images/drawing-game.png",
+    img: "/images/placeholder.png",
     link: "https://github.com/yourname/drawing-game",
+    technologies: ["C++", "C#"]
+  },
+  {
+    title: "Test1",
+    desc: "A multiplayer browser-based drawing game.",
+    img: "/images/placeholder.png",
+    link: "https://github.com/yourname/drawing-game",
+    technologies: ["C++", "C#"]
+  },
+  {
+    title: "Test2",
+    desc: "A multiplayer browser-based drawing game.",
+    img: "/images/placeholder.png",
+    link: "https://github.com/yourname/drawing-game",
+    technologies: ["C++", "C#"]
   },
 ]
 
@@ -26,22 +43,26 @@ type ProjectCardProps = {
   desc: string
   img: string
   link: string
+  technologies: string[]
 }
 
-function ProjectCard({title, desc, img, link}:ProjectCardProps) {
+function ProjectCard({title, desc, img, link,technologies}:ProjectCardProps) {
   return (
-    <Card.Root>
-    <Card.Body>
-      <Heading>{title}</Heading>
-      <Text>{desc}</Text>
-    </Card.Body>
+    <Card.Root width="340px" borderWidth="2px" borderColor="white" borderRadius="30px" bgColor="#222233" color="lightgrey">
+      <Card.Body>
+        <Heading alignSelf="center" color="white"fontWeight="bold">{title}</Heading>
+        <Image src={img} height="250px" padding="10px"></Image>
+        <Text>{desc}</Text>
+      </Card.Body>
 
-    <Card.Footer>
-        <Button asChild>
-          <a href={link} target="_blank" rel="noopener noreferrer">
-            View project
-          </a>
-        </Button>
+      <Card.Footer height="full" alignContent="start" alignItems="start">
+        <HStack widows="full" wrap="wrap" justifyContent="start">
+          {technologies.map((tech, index) => (
+            <Badge key={index} borderWidth="2px" borderColor="lightgrey" borderRadius="15px" bgColor="#222233" color="white" size="md">
+              {tech}
+            </Badge>
+          ))}
+        </HStack>
       </Card.Footer>
     </Card.Root>
   )
@@ -51,22 +72,17 @@ function ProjectCard({title, desc, img, link}:ProjectCardProps) {
 export default function Projects() {
     return (
       <main>
-        <SimpleGrid
-          columns={{
-            base: 1,
-            md: 2,
-            lg: 3,
-          }}
+        <Flex
           gap="8" 
-          width="90%"
-          maxWidth="1200px"
-          marginX="auto"
-          paddingY="10"
+          wrap="wrap"
+          marginX="12%"
+          justify="center"
+          padding="35px"
         >
             {projects.map((project) => (
               <ProjectCard key={project.title} {...project} />
             ))}
-        </SimpleGrid>
+        </Flex>
       </main>
     )
 }

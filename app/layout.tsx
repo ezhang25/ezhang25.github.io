@@ -9,11 +9,11 @@ import { system } from "@/components/ui/theme";
 export function NavBar() {
   return (
     <Center maxW="1200px" width="full" marginX="auto">
-      <Flex flexDir={{base:"column", md:"row"}} width="full" align="center" justify="space-between">
-        <Flex asChild justify="center" fontSize="200%" padding="5">
+      <Flex flexDir={{base:"column", md:"row"}} width="80%" align="center" justify="space-between">
+        <Flex asChild justify="center" padding="5">
           <NextLink href="/" style={{ whiteSpace: "nowrap" }}>
-            <Text fontSize="100%" color="white" font="Monaco" fontWeight="bold">
-              Evan Zhang
+            <Text fontSize="200%" color="white" font="Monaco" fontWeight="1000">
+              evan zhang
             </Text>
           </NextLink>
         </Flex>
@@ -21,20 +21,20 @@ export function NavBar() {
           <Tabs.List display="flex" flexWrap="nowrap" gap="3%">
             <Tabs.Trigger value="about" fontSize="lg">
               <Text fontSize="100%" color="#dcdce0">
-                About
+                about
               </Text>
             </Tabs.Trigger>
             <Tabs.Trigger asChild value="projects" fontSize="lg">
               <NextLink href="/projects">
                 <Text fontSize="100%" color="#dcdce0">
-                  Projects
+                  projects
                 </Text>
               </NextLink>
             </Tabs.Trigger>
             <Tabs.Trigger asChild value="resume" fontSize="lg">
               <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                 <Text fontSize="100%" color="#dcdce0">
-                  Resume
+                  resume
                 </Text>
               </NextLink>
             </Tabs.Trigger>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <br />
             <br />
 
-            <Separator borderWidth="1px" borderColor="grey" maxW="1150px" width="80%" marginX="auto"/>
+            <Separator borderWidth="1px" borderColor="grey" maxW="1000px" width="80%" marginX="auto"/>
 
             <HStack marginX="auto" justify="center" align="center" height="200px">
               <Link href="https://github.com/ezhang25" target="_blank" rel="noopener noreferrer">
