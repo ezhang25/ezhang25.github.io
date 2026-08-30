@@ -1,31 +1,37 @@
 import { EmotionRegistry } from "@/components/ui/emotion-registry"
 import { Provider } from "@/components/ui/provider"
 import NextLink from "next/link"
-import { Tabs, Link, Separator, IconButton, HStack } from "@chakra-ui/react"
+import { Tabs, Link, Separator, IconButton, HStack, Flex, Text, Theme, Center } from "@chakra-ui/react"
 import { FaGithub, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
 
 export function NavBar() {
   return (
-    <Tabs.Root display="flex" flexWrap={{ base: 'wrap', md: 'nowrap' }} value="none" size="lg" variant="subtle" padding="5" width="full">
-      <Tabs.List width="full" gap="3%" marginTop="3">
-        <Tabs.Trigger asChild value="evan" fontSize="200%" padding="5" marginLeft="20" marginRight="auto">
+    <Center maxW="1200px" width="full" marginX="auto">
+      <Flex flexDir={{base:"column", md:"row"}} width="full" align="center" justify="space-between">
+        <Flex asChild justify="center" fontSize="200%" padding="5">
           <NextLink href="/" style={{ whiteSpace: "nowrap" }}>
-            Evan Zhang
+            <Text fontSize="100%">
+              Evan Zhang
+            </Text>
           </NextLink>
-        </Tabs.Trigger>
-        <Tabs.Trigger value="about" fontSize="lg" padding="5">
-          About               
-        </Tabs.Trigger>
-        <Tabs.Trigger asChild value="projects" fontSize="lg" padding="5">
-          <NextLink href="/projects">
-              Projects  
-          </NextLink>
-        </Tabs.Trigger>
-        <Tabs.Trigger asChild value="resume" fontSize="lg"  padding="5" marginRight="20">
-          <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</NextLink>
-        </Tabs.Trigger>
-      </Tabs.List>
-    </Tabs.Root>
+        </Flex>
+        <Tabs.Root value="none" size="sm" variant="subtle" justify={{base:"center", md:"end"}} padding="5" width="full">
+          <Tabs.List display="flex" flexWrap="nowrap" gap="3%">
+            <Tabs.Trigger value="about" fontSize="lg">
+              About               
+            </Tabs.Trigger>
+            <Tabs.Trigger asChild value="projects" fontSize="lg">
+              <NextLink href="/projects">
+                  Projects  
+              </NextLink>
+            </Tabs.Trigger>
+            <Tabs.Trigger asChild value="resume" fontSize="lg">
+              <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</NextLink>
+            </Tabs.Trigger>
+          </Tabs.List>
+        </Tabs.Root>
+      </Flex>
+    </Center>
   )
 }
 
@@ -35,8 +41,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <EmotionRegistry>
           <Provider>
+          <Theme appearance="light" colorScheme="blue">
+
             <NavBar />
-            <Separator borderWidth="2px" borderColor="blackAlpha.500" width="full" marginX="auto"/>
+            <Separator borderWidth="2px" borderColor="grey" width="full" marginX="auto"/>
 
 
             {children}
@@ -44,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <br />
             <br />
 
-            <Separator borderWidth="1px" borderColor="blackAlpha.50" width="80%" marginX="auto"/>
+            <Separator borderWidth="1px" borderColor="white" width="80%" marginX="auto"/>
 
             <br />
             <br />
@@ -67,6 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </Link>
             </HStack>
 
+          </Theme>
           </Provider>
         </EmotionRegistry>
       </body>
