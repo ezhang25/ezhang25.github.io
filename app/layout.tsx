@@ -1,8 +1,10 @@
+"use client"
+
 import { EmotionRegistry } from "@/components/ui/emotion-registry"
-import { Provider } from "@/components/ui/provider"
 import NextLink from "next/link"
-import { Tabs, Link, Separator, IconButton, HStack, Flex, Text, Theme, Center } from "@chakra-ui/react"
+import { ChakraProvider, Tabs, Link, Separator, IconButton, HStack, Flex, Text, Theme, Center } from "@chakra-ui/react"
 import { FaGithub, FaEnvelope, FaLinkedinIn } from "react-icons/fa";
+import { system } from "@/components/ui/theme";
 
 export function NavBar() {
   return (
@@ -10,7 +12,7 @@ export function NavBar() {
       <Flex flexDir={{base:"column", md:"row"}} width="full" align="center" justify="space-between">
         <Flex asChild justify="center" fontSize="200%" padding="5">
           <NextLink href="/" style={{ whiteSpace: "nowrap" }}>
-            <Text fontSize="100%">
+            <Text fontSize="100%" color="white" font="Monaco" fontWeight="bold">
               Evan Zhang
             </Text>
           </NextLink>
@@ -18,15 +20,23 @@ export function NavBar() {
         <Tabs.Root value="none" size="sm" variant="subtle" justify={{base:"center", md:"end"}} padding="5" width="full">
           <Tabs.List display="flex" flexWrap="nowrap" gap="3%">
             <Tabs.Trigger value="about" fontSize="lg">
-              About               
+              <Text fontSize="100%" color="#dcdce0">
+                About
+              </Text>
             </Tabs.Trigger>
             <Tabs.Trigger asChild value="projects" fontSize="lg">
               <NextLink href="/projects">
-                  Projects  
+                <Text fontSize="100%" color="#dcdce0">
+                  Projects
+                </Text>
               </NextLink>
             </Tabs.Trigger>
             <Tabs.Trigger asChild value="resume" fontSize="lg">
-              <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</NextLink>
+              <NextLink href="https://drive.google.com/file/d/17y5e7S-DUrizU3hRasIYAbhP1fDZi-3G/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                <Text fontSize="100%" color="#dcdce0">
+                  Resume
+                </Text>
+              </NextLink>
             </Tabs.Trigger>
           </Tabs.List>
         </Tabs.Root>
@@ -40,43 +50,40 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html suppressHydrationWarning>
       <body>
         <EmotionRegistry>
-          <Provider>
-          <Theme appearance="light" colorScheme="blue">
-
+          <ChakraProvider value={system}> 
             <NavBar />
-            <Separator borderWidth="2px" borderColor="grey" width="full" marginX="auto"/>
-
 
             {children}
 
             <br />
             <br />
 
-            <Separator borderWidth="1px" borderColor="white" width="80%" marginX="auto"/>
+            <Separator borderWidth="1px" borderColor="grey" maxW="1150px" width="80%" marginX="auto"/>
 
-            <br />
-            <br />
-
-            <HStack marginX="auto" justify="center">
+            <HStack marginX="auto" justify="center" align="center" height="200px">
               <Link href="https://github.com/ezhang25" target="_blank" rel="noopener noreferrer">
-                <IconButton aria-label="GitHub Profile"> 
-                  <FaGithub size="2em" />
-                </IconButton>
+                <Theme appearance="dark">
+                  <IconButton aria-label="GitHub Profile"> 
+                    <FaGithub size="2em" />
+                  </IconButton>
+                </Theme>
               </Link>
               <Link href="https://www.linkedin.com/in/evan-zhang-387574374/" target="_blank" rel="noopener noreferrer">
-                <IconButton aria-label="Linkedin Profile"> 
-                  <FaLinkedinIn size="2em" />
-                </IconButton>
+                <Theme appearance="dark">
+                  <IconButton aria-label="Linkedin Profile"> 
+                    <FaLinkedinIn size="2em" />
+                  </IconButton>
+                </Theme>
               </Link>
               <Link href="mailto:evanzhang68@g.ucla.edu" target="_blank" rel="noopener noreferrer">
-                <IconButton aria-label="Gmail"> 
-                  <FaEnvelope size="2em" />
-                </IconButton>
+                <Theme appearance="dark">
+                  <IconButton aria-label="Gmail"> 
+                    <FaEnvelope size="2em" />
+                  </IconButton>
+                </Theme>
               </Link>
-            </HStack>
-
-          </Theme>
-          </Provider>
+            </HStack>              
+          </ChakraProvider>
         </EmotionRegistry>
       </body>
     </html>
