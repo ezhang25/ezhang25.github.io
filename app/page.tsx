@@ -4,7 +4,7 @@ export default function Home() {
     return (
       <main>
         <Flex justify="center" padding="2%">
-          <SimpleGrid columns={{base:1, lg:2}} marginTop="5" gap="6" width="50%">
+          <SimpleGrid columns={{base:1, lg:2}} marginTop="5" gap="6" width={{base:"80%", lg:"850px"}}>
             <Box h="400" w="400" borderColor="white" borderWidth="2px" borderRadius="xl">
               <Image 
                 src="/images/me.png"

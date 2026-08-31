@@ -48,10 +48,10 @@ type ProjectCardProps = {
 
 function ProjectCard({title, desc, img, link,technologies}:ProjectCardProps) {
   return (
-    <Card.Root width="340px" borderWidth="2px" borderColor="white" borderRadius="30px" bgColor="#222233" color="lightgrey">
+    <Card.Root maxW="340px" width="100%" overflow="hidden" borderWidth="2px" borderColor="white" borderRadius="30px" bgColor="#222233" color="lightgrey" _hover={{transform: "translateY(-4px)", shadow: "lg"}}>
+      <Image src={img} height="250px"/>
       <Card.Body>
         <Heading alignSelf="center" color="white"fontWeight="bold">{title}</Heading>
-        <Image src={img} height="250px" padding="10px"></Image>
         <Text>{desc}</Text>
       </Card.Body>
 
@@ -75,7 +75,7 @@ export default function Projects() {
         <Flex
           gap="8" 
           wrap="wrap"
-          marginX="12%"
+          marginX="8%"
           justify="center"
           padding="35px"
         >
