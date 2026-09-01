@@ -20,9 +20,11 @@ export function NavBar() {
         <Tabs.Root value="none" size="sm" variant="subtle" justify={{base:"center", md:"end"}} padding="5" width="full">
           <Tabs.List display="flex" flexWrap="nowrap" gap="3%">
             <Tabs.Trigger value="about" fontSize="lg">
-              <Text fontSize="100%" color="#dcdce0">
-                about
-              </Text>
+              <NextLink href="/about">
+                <Text fontSize="100%" color="#dcdce0">
+                  about
+                </Text>
+              </NextLink>
             </Tabs.Trigger>
             <Tabs.Trigger asChild value="projects" fontSize="lg">
               <NextLink href="/projects">
@@ -48,6 +50,12 @@ export function NavBar() {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/images/favicon.png"/>
+        <title>
+          Evan Zhang
+        </title>
+      </head>
       <body>
         <EmotionRegistry>
           <ChakraProvider value={system}> 
